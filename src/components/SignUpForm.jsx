@@ -24,12 +24,16 @@ const SignUpForm = ({ token, setToken }) => {
       console.log(result);
     } catch (error) {
       setError(error.message);
+      console.log("Please enter a username and password first.");
     }
   }
 
   return (
     <>
       <h2>Sign Up</h2>
+      {(!username && <p>Please enter a username and password.</p>) ||
+        (!password && <p>Please enter a password.</p>)}
+      {/* {!password && <p>Please enter a username and password:</p>} */}
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
 
@@ -38,6 +42,8 @@ const SignUpForm = ({ token, setToken }) => {
           Username:{" "}
           <input
             value={username}
+            type="text"
+            required
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
@@ -45,6 +51,9 @@ const SignUpForm = ({ token, setToken }) => {
           Password:{" "}
           <input
             value={password}
+            type="text"
+            required
+            minLength={8}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
