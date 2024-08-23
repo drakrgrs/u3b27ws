@@ -30,7 +30,7 @@ const Authenticate = ({ token, setToken }) => {
   return (
     <>
       <h2>Authenticate!</h2>
-      {successMessage && <p>{successMessage}</p>}
+
       {data && (
         <>
           <span>Username:{data.username}</span>
@@ -39,7 +39,13 @@ const Authenticate = ({ token, setToken }) => {
           <br />
         </>
       )}
-      {error && <p>{error}</p>}
+
+      {successMessage === "jwt malformed" ? (
+        <p>Houston, we have a problem.</p>
+      ) : (
+        <p>{successMessage}</p>
+      )}
+
       <button onClick={handleClick}>Authenticate Token</button>
     </>
   );
