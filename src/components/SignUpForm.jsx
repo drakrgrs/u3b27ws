@@ -33,7 +33,6 @@ const SignUpForm = ({ token, setToken }) => {
       <h2>Sign Up</h2>
       {(!username && <p>Please enter a username and password.</p>) ||
         (!password && <p>Please enter a password.</p>)}
-      {/* {!password && <p>Please enter a username and password:</p>} */}
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
 
